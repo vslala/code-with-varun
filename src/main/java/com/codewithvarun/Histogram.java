@@ -10,7 +10,8 @@ public class Histogram {
         for (String left: words) {
             for (String right: words) {
                 String pair = left + right;
-                int bucket = pair.hashCode() % histogram.length;
+                System.out.println(pair);
+                int bucket = Math.abs(pair.hashCode()) % histogram.length;
                 histogram[bucket]++;
             }
         }
