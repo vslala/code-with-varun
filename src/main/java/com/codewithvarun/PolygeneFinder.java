@@ -3,6 +3,13 @@ package com.codewithvarun;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+import static java.util.Collections.*;
+import static java.util.stream.Collectors.groupingBy;
 
 public class PolygeneFinder {
 
@@ -20,14 +27,28 @@ public class PolygeneFinder {
     }
 
     private void analyzeWordPair(String[] words) {
-        for (String left : words) {
-            for (String right : words) {
-                int hash = left.hashCode() * powersOf31[right.length()] + right.hashCode();
-                String pair = left + right;
-                if (hash == Integer.MIN_VALUE) {
-                    System.out.println(pair);
+        List<String> wordStream = Arrays.asList(words);
+        Map<Integer, Map<Integer, List<String>>> byLengthByHash = wordStream.stream()
+                .collect(groupingBy(String::length, groupingBy(String::hashCode)));
+
+        wordStream.parallelStream().forEach(left -> {
+            byLengthByHash.forEach((length, hash) -> {
+                int targetHash = Integer.MIN_VALUE - left.hashCode() * powersOf31[length];
+                for (String right: hash.getOrDefault(targetHash, emptyList())) {
+                    System.out.println(left + right);
                 }
-            }
-        }
+            });
+        });
+
+
+//        for (String left : words) {
+//            for (String right : words) {
+//                int hash = left.hashCode() * powersOf31[right.length()] + right.hashCode();
+//                String pair = left + right;
+//                if (hash == Integer.MIN_VALUE) {
+//                    System.out.println(pair);
+//                }
+//            }
+//        }
     }
 }
