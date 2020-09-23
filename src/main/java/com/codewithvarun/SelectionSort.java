@@ -1,12 +1,7 @@
 package com.codewithvarun;
 
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import static java.lang.System.out;
-import static java.util.stream.Collectors.*;
 
 public class SelectionSort implements Sort {
 
@@ -18,12 +13,13 @@ public class SelectionSort implements Sort {
     }
 
     @Override
-    public void sort() {
+    public int[] sort() {
         long startMillis = System.currentTimeMillis();
         AtomicInteger min = new AtomicInteger();
         IntStream.range(0, input.length).forEach(sortedIndex -> {
             min.set(input[sortedIndex]);
             IntStream.range(sortedIndex, input.length).forEach(rightIndex -> {
+                print();
                 if (input[rightIndex] < min.intValue()) {
                     min.set(input[rightIndex]);
                     input[rightIndex] = input[sortedIndex];
@@ -32,6 +28,7 @@ public class SelectionSort implements Sort {
             });
         });
         totalTime = System.currentTimeMillis() - startMillis;
+        return input;
     }
 
     @Override
