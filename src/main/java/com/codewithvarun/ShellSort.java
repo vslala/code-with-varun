@@ -20,8 +20,6 @@ public class ShellSort implements Sort {
             gap = 3 * gap + 1;
         }
 
-        System.out.println(builder.toString());
-
         while (gap > 1) {
             for (int i = gap; i < input.length; i++) {
                 for (int j = i; j >= gap && input[j] < input[j - gap]; j -= gap) {
@@ -46,5 +44,10 @@ public class ShellSort implements Sort {
     @Override
     public void time() {
         time(totalTime);
+    }
+
+    @Override
+    public long totalTime() {
+        return totalTime;
     }
 }

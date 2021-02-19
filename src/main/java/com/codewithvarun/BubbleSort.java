@@ -34,6 +34,11 @@ public class BubbleSort implements Sort {
         time(totalTime);
     }
 
+    @Override
+    public long totalTime() {
+        return totalTime;
+    }
+
     private void swap(int innerIndex) {
         if (input[innerIndex + 1] < input[innerIndex]) {
             Sort.swap(input, innerIndex, innerIndex + 1);

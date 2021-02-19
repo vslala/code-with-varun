@@ -32,4 +32,9 @@ public class InsertionSort implements Sort {
     public void time() {
         time(totalTime);
     }
+
+    @Override
+    public long totalTime() {
+        return totalTime;
+    }
 }

@@ -3,6 +3,7 @@ package com.codewithvarun;
 public class MergeSort implements Sort {
 
     private int[] input;
+    private long totalTime;
 
     public MergeSort(int[] input) {
         this.input = input;
@@ -10,7 +11,10 @@ public class MergeSort implements Sort {
 
     @Override
     public int[] sort() {
-        return divide(input);
+        long startMillis = System.currentTimeMillis();
+        int[] sortedArr = divide(input);
+        totalTime = System.currentTimeMillis() - startMillis;
+        return sortedArr;
     }
 
     private int[] divide(int[] arr) {
@@ -64,6 +68,11 @@ public class MergeSort implements Sort {
 
     @Override
     public void time() {
+        time(totalTime);
+    }
 
+    @Override
+    public long totalTime() {
+        return totalTime;
     }
 }

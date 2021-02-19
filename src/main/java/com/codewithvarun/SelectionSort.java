@@ -19,7 +19,6 @@ public class SelectionSort implements Sort {
         IntStream.range(0, input.length).forEach(sortedIndex -> {
             min.set(input[sortedIndex]);
             IntStream.range(sortedIndex, input.length).forEach(rightIndex -> {
-                print();
                 if (input[rightIndex] < min.intValue()) {
                     min.set(input[rightIndex]);
                     input[rightIndex] = input[sortedIndex];
@@ -39,5 +38,10 @@ public class SelectionSort implements Sort {
     @Override
     public void time() {
         time(totalTime);
+    }
+
+    @Override
+    public long totalTime() {
+        return totalTime;
     }
 }
