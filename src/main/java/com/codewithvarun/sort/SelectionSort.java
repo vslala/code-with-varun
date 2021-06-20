@@ -1,8 +1,12 @@
 package com.codewithvarun.sort;
 
-public class SelectionSort {
+import java.util.Arrays;
 
-    public int[] sort(int[] arr) {
+public class SelectionSort implements Sort {
+
+    @Override
+    public int[] sort(int[] input) {
+        var arr = Arrays.copyOf(input, input.length);
         var lastIndex = arr.length - 1;
         while (lastIndex > -1) {
             var max = 0;
@@ -12,10 +16,7 @@ public class SelectionSort {
                 }
             }
 
-            var temp = arr[lastIndex];
-            arr[lastIndex] = arr[max];
-            arr[max] = temp;
-
+            swap(arr, lastIndex, max);
             lastIndex --;
         }
 
