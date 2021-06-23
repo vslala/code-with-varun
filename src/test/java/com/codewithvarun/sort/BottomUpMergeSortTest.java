@@ -10,14 +10,13 @@ import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SelectionSortTest {
-
+class BottomUpMergeSortTest {
     private Sort selectionSort;
 
     // setup
     @BeforeEach
     void setup() {
-        selectionSort = new SelectionSort();
+        selectionSort = new BottomUpMergeSort();
     }
 
     // test
@@ -40,5 +39,4 @@ class SelectionSortTest {
     void cleanup() {
         selectionSort = null;
     }
-
 }
