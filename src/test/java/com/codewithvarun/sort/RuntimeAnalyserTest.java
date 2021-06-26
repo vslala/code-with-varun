@@ -18,7 +18,8 @@ class RuntimeAnalyserTest {
                 new SelectionSort(),
                 new InsertionSort(),
                 new BottomUpMergeSort(),
-                new QuickSort()
+                new QuickSort(),
+                new RecursiveSort()
         ), 10000);
     }
 
@@ -26,7 +27,7 @@ class RuntimeAnalyserTest {
     void itShouldTimeTheAlgorithms() {
         List<Record> records = runtimeAnalyser.run();
         System.out.println(records.stream().map(String::valueOf).collect(Collectors.joining(System.lineSeparator())));
-        assertEquals(4, records.size());
+        assertEquals(5, records.size());
     }
 
 }
