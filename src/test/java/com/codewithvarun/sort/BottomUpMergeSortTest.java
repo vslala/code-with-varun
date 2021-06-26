@@ -23,7 +23,7 @@ class BottomUpMergeSortTest {
     @Test
     void itShouldSortTheGivenArrayInAscendingOrder() {
         // given
-        var arr = new int[]{34, 12, 34, 7, 3, 23, 65, 23};
+        var arr = new int[]{886,716,787,36,925,731,881,642,540};
 
         // when
         int[] output = selectionSort.sort(arr);

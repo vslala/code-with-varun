@@ -9,10 +9,10 @@ public class BottomUpMergeSort implements  Sort {
         var aux = new int[input.length];
         for (var width = 1; width < arr.length; width = 2 * width) {
             int i;
-            for (i = 0; i < arr.length; i = i + 2 * width) {
+            for (i = 0; i < arr.length - width; i = i + 2 * width) {
                 int left = i;   // start index of array 1
                 int middle = i + width; // start index of second array or the end index of first array
-                int end = i + 2 * width;    // end of the second array
+                int end = Math.min(i + 2 * width, input.length);    // end of the second array
 
                 merge(arr, left, middle, end, aux);
             }
