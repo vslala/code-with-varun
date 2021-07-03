@@ -1,5 +1,7 @@
 package com.codewithvarun.datastructures.stack;
 
+import com.codewithvarun.datastructures.Node;
+
 public class Stack<T> {
 
     private Node<T> topNode;
@@ -25,5 +27,6 @@ public class Stack<T> {
 
     public void pop() {
         topNode = topNode.getNext();
+        size--;
     }
 }

@@ -1,4 +1,4 @@
-package com.codewithvarun.datastructures.stack;
+package com.codewithvarun.datastructures;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
