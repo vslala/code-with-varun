@@ -2,7 +2,8 @@ package com.codewithvarun.sort;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -21,10 +22,16 @@ class BottomUpMergeSortTest {
     }
 
     // test
-    @Test
-    void itShouldSortTheGivenArrayInAscendingOrder() {
+    @ParameterizedTest
+    @CsvSource({
+            "886 716 787 36 925 731 881 642 540",
+            "787 36 925 731 881 881 642 540"
+    })
+    void itShouldSortTheGivenArrayInAscendingOrder(String input) {
         // given
-        var arr = new int[]{886,716,787,36,925,731,881,642,540};
+        var arr = Arrays.stream(input.split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
 
         // when
         int[] output = selectionSort.sort(arr);
