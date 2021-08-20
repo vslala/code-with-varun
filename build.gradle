@@ -13,6 +13,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
