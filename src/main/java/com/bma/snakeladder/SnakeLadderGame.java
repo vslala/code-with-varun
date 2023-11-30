@@ -25,6 +25,8 @@ public class SnakeLadderGame {
         int outcome = ThreadLocalRandom.current().nextInt(1, 3);
         this.currentUser = users.get(outcome - 1);
         this.tossOutcome = outcome;
+        this.scoreCard.setTossWinner(this.currentUser);
+
         return outcome;
     }
 
@@ -39,13 +41,19 @@ public class SnakeLadderGame {
     public void rollDice() {
         int diceOutcome = this.currentUser.rollDice(dice);
         int currentPosition = convertCoordToNumber(currentUser.getPosition());
-        BoardCell cell = gameBoard.getEventualCell(currentPosition + diceOutcome > 99 ? currentPosition : currentPosition + diceOutcome);
+        int nextPosition = currentPosition + diceOutcome > 99 ? currentPosition : currentPosition + diceOutcome;
+        BoardCell cell = gameBoard.getEventualCell(nextPosition);
 
         this.currentUser.setPosition(cell);
+        this.scoreCard.addDiceRoll(new DiceRoll(this.currentUser, diceOutcome, currentPosition, nextPosition));
+
         changeUserTurn();
 
         if (cell.isLast()) {
+            this.scoreCard.setGameWinner(this.currentUser);
+            System.out.println(this.scoreCard);
             throw new RuntimeException("Round Over! " + currentUser.getUsername() + " is the winner!");
+
         }
     }
 
