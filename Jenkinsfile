@@ -7,7 +7,7 @@ pipeline {
                 echo 'Building..'
             }
         }
-        stage('Demo') {
+        stage('com.bma.snakeladder.GameBoard') {
             steps {
                 echo 'Testing..'
             }
